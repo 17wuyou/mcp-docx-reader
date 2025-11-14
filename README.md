@@ -28,7 +28,7 @@ Add the following to your claude_desktop_config.json:
             "command": "uvx",
             "args": [
                 "--from",
-                "git+https://github.com/your-username/mcp_docx_reader@main",
+                "git+https://github.com/17wuyou/mcp_docx_reader@main",
                 "mcp_docx_reader"
             ]
         }

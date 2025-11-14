@@ -37,10 +37,16 @@ def read_docx(ctx, filename: str) -> str:
     :param filename: Name of the DOCX file to read
     :return: Extracted text from the DOCX
     """
-    docx_path = os.path.join(ctx.docx_directory, filename)
+    # 获取docx目录，优先使用上下文中的目录，否则使用全局变量
+    try:
+        docx_directory = getattr(ctx, 'docx_directory', DOCX_DIRECTORY)
+    except:
+        docx_directory = DOCX_DIRECTORY
+    
+    docx_path = os.path.join(docx_directory, filename)
 
     if not os.path.exists(docx_path):
-        return f"Error: File '{filename}' not found."
+        return f"Error: File '{filename}' not found at {docx_path}."
 
     try:
         # Open and extract text from the DOCX
